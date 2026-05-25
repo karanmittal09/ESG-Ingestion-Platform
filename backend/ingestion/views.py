@@ -38,8 +38,11 @@ class SAPUploadView(APIView):
             "uploaded_by"
         ]
 
-        organization = Organization.objects.get(
-            id=organization_id
+        organization, created = Organization.objects.get_or_create(
+            id=1,
+            defaults={
+                "name": "Demo Organization"
+            }
         )
 
         datasource = DataSource.objects.create(
@@ -126,8 +129,11 @@ class UtilityUploadView(APIView):
             "uploaded_by"
         )
 
-        organization = Organization.objects.get(
-            id=organization_id
+        organization, created = Organization.objects.get_or_create(
+            id=1,
+            defaults={
+                "name": "Demo Organization"
+            }
         )
 
         datasource = DataSource.objects.create(
@@ -179,6 +185,7 @@ class UtilityUploadView(APIView):
             status=status.HTTP_201_CREATED
         )
 
+
 class TravelUploadView(APIView):
 
     parser_classes = [MultiPartParser, FormParser]
@@ -195,8 +202,11 @@ class TravelUploadView(APIView):
             "uploaded_by"
         )
 
-        organization = Organization.objects.get(
-            id=organization_id
+        organization, created = Organization.objects.get_or_create(
+            id=1,
+            defaults={
+                "name": "Demo Organization"
+            }
         )
 
         datasource = DataSource.objects.create(
